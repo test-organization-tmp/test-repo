@@ -12,7 +12,6 @@
    {% for item in functions %}
    .. autofunction:: {{ item }}
 
-   .. include:: {{fullname}}.{{item}}.examples
 
    .. raw:: html
 
