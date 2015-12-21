@@ -129,8 +129,8 @@ def spm_affine(in_file):
     affine : numpy.ndarray of shape (4, 4)
         The affine transformation matrix.
 
-    Note
-    ----
+    Notes
+    -----
     This function uses nibabel to read the affine transform and corrects the
     translation part to match the affine output of spm.
     """
