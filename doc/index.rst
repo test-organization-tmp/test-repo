@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    auto_examples/index.rst
+   tutorials/index.rst
    reference.rst
 
 

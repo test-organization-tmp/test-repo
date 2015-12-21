@@ -19,12 +19,13 @@ import sphinx_gallery
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('sphinxext'))
 
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
+
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -35,8 +36,9 @@ extensions = [    'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
 #    'sphinx.ext.todo',
 #    'sphinx.ext.coverage',
-#    'sphinx.ext.mathjax',
+    'sphinx.ext.mathjax',
     'numpydoc',
+#    'numpy_ext.numpydoc',
     'sphinx_gallery.gen_gallery']
 
 numpydoc_show_class_members = False
@@ -276,7 +278,7 @@ texinfo_documents = [
 sphinx_gallery_conf = {
     # Your documented modules. In this case sphinx_gallery and numpy
     # in a tuple of strings.
-    'doc_module': ('procasl', 'nipype', 'nilearn'),
+    'doc_module': 'procasl', #('procasl', 'nipype', 'nilearn'),
     'reference_url': {
         # The module you locally document uses a None
         'procasl': None,
@@ -293,6 +295,6 @@ sphinx_gallery_conf = {
     'gallery_dirs': ['auto_examples', 'tutorials'],
 
     # path to store the module using example template
-#    'mod_example_dir': 'modules/generated'
+    'mod_example_dir': 'modules/generated'
     }
 
