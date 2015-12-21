@@ -40,36 +40,13 @@ extensions = [    'sphinx.ext.autodoc',
     'sphinx_gallery.gen_gallery']
 
 numpydoc_show_class_members = False
-# Generate autosummary even if no references
-autosummary_generate = True
 
-# Add a configuration dictionary for Sphinx-Gallery
-sphinx_gallery_conf = {
-    # path to your examples scripts
-    'examples_dirs': '../examples',
-    # path where to save gallery generated examples
-    'gallery_dirs': 'auto_examples',
-    'reference_url': {
-        # The module you locally document uses a None
-        'procasl': None,
-
-        # External python modules use their documentation websites
-        'matplotlib': 'http://matplotlib.org',
-        'numpy': 'http://docs.scipy.org/doc/numpy-1.9.1',
-        'scipy': 'http://docs.scipy.org/doc/scipy-0.11.0/reference',
-        'nibabel': 'http://nipy.org/nibabel',
-        'nipype': 'http://nipy.org/nipype/',
-        'nilearn': 'http://nilearn.github.io'},
-    # path to store the module using example template
-    'mod_example_dir': 'modules/generated',
-
-    # Your documented modules. In this case sphinx_gallery and numpy
-    # in a tuple of strings.
-    'doc_module': ('procasl', 'nipype', 'nilearn')
-    }
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+# Generate autosummary even if no references
+autosummary_generate = True
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -294,3 +271,28 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# Add a configuration dictionary for Sphinx-Gallery
+sphinx_gallery_conf = {
+    # Your documented modules. In this case sphinx_gallery and numpy
+    # in a tuple of strings.
+    'doc_module': ('procasl', 'nipype', 'nilearn'),
+    'reference_url': {
+        # The module you locally document uses a None
+        'procasl': None,
+        # External python modules use their documentation websites
+        'matplotlib': 'http://matplotlib.org',
+        'numpy': 'http://docs.scipy.org/doc/numpy-1.9.1',
+        'scipy': 'http://docs.scipy.org/doc/scipy-0.11.0/reference',
+        'nibabel': 'http://nipy.org/nibabel',
+        'nipype': 'http://nipy.org/nipype/',
+        'nilearn': 'http://nilearn.github.io'},
+    # path to your examples scripts
+    'examples_dirs': ['../examples', '../tutorials'],
+    # path where to save gallery generated examples
+    'gallery_dirs': ['auto_examples', 'tutorials'],
+
+    # path to store the module using example template
+#    'mod_example_dir': 'modules/generated'
+    }
+
