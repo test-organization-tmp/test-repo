@@ -1,0 +1,13 @@
+============================
+Procasl API Reference
+============================
+
+.. currentmodule:: procasl
+
+.. autosummary::
+   :toctree: modules/generated/
+   :template: module.rst
+
+   preprocessing.Coregister.examples
+   quantification.compute_perfusion.examples
+

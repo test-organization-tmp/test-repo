@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>procasl.preprocessing &mdash; procasl 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="procasl 0 documentation" href="../../index.html" />
+    <link rel="up" title="Procasl API Reference" href="../../reference.html" />
+    <link rel="next" title="procasl.quantification" href="procasl.quantification.html" />
+    <link rel="prev" title="procasl.datasets" href="procasl.datasets.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="procasl.quantification.html" title="procasl.quantification"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="procasl.datasets.html" title="procasl.datasets"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">procasl 0 documentation</a> &raquo;</li>
+          <li><a href="../../reference.html" accesskey="U">Procasl API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-procasl.preprocessing">
+<span id="procasl-preprocessing"></span><h1>procasl.preprocessing<a class="headerlink" href="#module-procasl.preprocessing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="procasl.preprocessing.add_prefix">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">add_prefix</tt><big>(</big><em>prefix</em>, <em>in_file</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.add_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a prefix to a filename</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>prefix</strong> : str</p>
+<blockquote>
+<div><p>Prefix to append to the filename</p>
+</div></blockquote>
+<p><strong>in_file</strong> : str</p>
+<blockquote>
+<div><p>Input file name.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out_file</strong> : str</p>
+<blockquote class="last">
+<div><p>Output file name</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.apply_mask">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">apply_mask</tt><big>(</big><em>in_file</em>, <em>mask_file</em>, <em>mask_value=nan</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.apply_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Masks input with a binary mask_file.</p>
+</dd></dl>
+
+<div class="section" id="examples-using-procasl-preprocessing-apply-mask">
+<h3>Examples using <tt class="docutils literal"><span class="pre">procasl.preprocessing.apply_mask</span></tt><a class="headerlink" href="#examples-using-procasl-preprocessing-apply-mask" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbContainer" tooltip="A basic multiple subjects pipeline. CBF maps are normalized to the reference MNI template. "><div class="figure">
+<img alt="../../_images/sphx_glr_multiple_subjects_thumb.png" src="../../_images/sphx_glr_multiple_subjects_thumb.png" />
+<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/multiple_subjects.html#sphx-glr-auto-examples-pipelines-multiple-subjects-py"><em>Multiple subjects pipeline demo</em></a></p>
+</div>
+</div><div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. "><div class="figure">
+<img alt="../../_images/sphx_glr_single_subject_thumb.png" src="../../_images/sphx_glr_single_subject_thumb.png" />
+<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/single_subject.html#sphx-glr-auto-examples-pipelines-single-subject-py"><em>One subject pipeline demo</em></a></p>
+</div>
+</div><div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.binarize_mask">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">binarize_mask</tt><big>(</big><em>in_file</em>, <em>threshold=0.5</em>, <em>out_file=None</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.binarize_mask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.check_images">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">check_images</tt><big>(</big><em>file1</em>, <em>file2</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.check_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that 2 images have the same affines and data shapes.</p>
+</dd></dl>
+
+<div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.compute_brain_mask">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">compute_brain_mask</tt><big>(</big><em>in_file</em>, <em>frac=0.5</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.compute_brain_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes binary brain mask using FSL BET.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="examples-using-procasl-preprocessing-compute-brain-mask">
+<h3>Examples using <tt class="docutils literal"><span class="pre">procasl.preprocessing.compute_brain_mask</span></tt><a class="headerlink" href="#examples-using-procasl-preprocessing-compute-brain-mask" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbContainer" tooltip="A basic multiple subjects pipeline. CBF maps are normalized to the reference MNI template. "><div class="figure">
+<img alt="../../_images/sphx_glr_multiple_subjects_thumb.png" src="../../_images/sphx_glr_multiple_subjects_thumb.png" />
+<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/multiple_subjects.html#sphx-glr-auto-examples-pipelines-multiple-subjects-py"><em>Multiple subjects pipeline demo</em></a></p>
+</div>
+</div><div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. "><div class="figure">
+<img alt="../../_images/sphx_glr_single_subject_thumb.png" src="../../_images/sphx_glr_single_subject_thumb.png" />
+<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/single_subject.html#sphx-glr-auto-examples-pipelines-single-subject-py"><em>One subject pipeline demo</em></a></p>
+</div>
+</div><div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.compute_mask">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">compute_mask</tt><big>(</big><em>in_file</em>, <em>out_file=None</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.compute_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute a brain mask from a 4D or a3D image.</p>
+</dd></dl>
+
+<div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.get_scans_number">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">get_scans_number</tt><big>(</big><em>in_file</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.get_scans_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of scans for a 4D image.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="examples-using-procasl-preprocessing-get-scans-number">
+<h3>Examples using <tt class="docutils literal"><span class="pre">procasl.preprocessing.get_scans_number</span></tt><a class="headerlink" href="#examples-using-procasl-preprocessing-get-scans-number" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbContainer" tooltip="A basic multiple subjects pipeline. CBF maps are normalized to the reference MNI template. "><div class="figure">
+<img alt="../../_images/sphx_glr_multiple_subjects_thumb.png" src="../../_images/sphx_glr_multiple_subjects_thumb.png" />
+<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/multiple_subjects.html#sphx-glr-auto-examples-pipelines-multiple-subjects-py"><em>Multiple subjects pipeline demo</em></a></p>
+</div>
+</div><div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. "><div class="figure">
+<img alt="../../_images/sphx_glr_single_subject_thumb.png" src="../../_images/sphx_glr_single_subject_thumb.png" />
+<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/single_subject.html#sphx-glr-auto-examples-pipelines-single-subject-py"><em>One subject pipeline demo</em></a></p>
+</div>
+</div><div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.params_to_affine">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">params_to_affine</tt><big>(</big><em>params</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.params_to_affine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms parameters to an affine matrix transform.
+Mimics the spm function spm_matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>params</strong> : 1D numpy.ndarray of size 6 or 12</p>
+<blockquote>
+<div><p>Parameters of the transform, in the following order:
+Tx, Ty, Tz, pitch, roll, yaw
+and possibly 3 zooms and 3 shears</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>affine</strong> : numpy.ndarray of shape (4, 4)</p>
+<blockquote class="last">
+<div><p>The affine transformation matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.save_first_scan">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">save_first_scan</tt><big>(</big><em>asl_file</em>, <em>out_file=None</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.save_first_scan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="examples-using-procasl-preprocessing-save-first-scan">
+<h3>Examples using <tt class="docutils literal"><span class="pre">procasl.preprocessing.save_first_scan</span></tt><a class="headerlink" href="#examples-using-procasl-preprocessing-save-first-scan" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbContainer" tooltip="This example compares a volume before and after T1 correction. "><div class="figure">
+<img alt="../../_images/sphx_glr_plot_heroes_rescaling_thumb.png" src="../../_images/sphx_glr_plot_heroes_rescaling_thumb.png" />
+<p class="caption"><a class="reference internal" href="../../auto_examples/plot_heroes_rescaling.html#sphx-glr-auto-examples-plot-heroes-rescaling-py"><em>Rescaling demo</em></a></p>
+</div>
+</div><div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.savemat">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">savemat</tt><big>(</big><em>file_name</em>, <em>mdict</em>, <em>appendmat=True</em>, <em>format='5'</em>, <em>long_field_names=False</em>, <em>do_compression=False</em>, <em>oned_as='row'</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.savemat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a dictionary of names and arrays into a MATLAB-style .mat file.</p>
+<p>This saves the array objects in the given dictionary to a MATLAB-
+style .mat file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>file_name</strong> : str or file-like object</p>
+<blockquote>
+<div><p>Name of the .mat file (.mat extension not needed if <tt class="docutils literal"><span class="pre">appendmat</span> <span class="pre">==</span>
+<span class="pre">True</span></tt>).
+Can also pass open file_like object.</p>
+</div></blockquote>
+<p><strong>mdict</strong> : dict</p>
+<blockquote>
+<div><p>Dictionary from which to save matfile variables.</p>
+</div></blockquote>
+<p><strong>appendmat</strong> : bool, optional</p>
+<blockquote>
+<div><p>True (the default) to append the .mat extension to the end of the
+given filename, if not already present.</p>
+</div></blockquote>
+<p><strong>format</strong> : {&#8216;5&#8217;, &#8216;4&#8217;}, string, optional</p>
+<blockquote>
+<div><p>&#8216;5&#8217; (the default) for MATLAB 5 and up (to 7.2),
+&#8216;4&#8217; for MATLAB 4 .mat files</p>
+</div></blockquote>
+<p><strong>long_field_names</strong> : bool, optional</p>
+<blockquote>
+<div><p>False (the default) - maximum field name length in a structure is
+31 characters which is the documented maximum length.
+True - maximum field name length in a structure is 63 characters
+which works for MATLAB 7.6+</p>
+</div></blockquote>
+<p><strong>do_compression</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether or not to compress matrices on write.  Default is False.</p>
+</div></blockquote>
+<p><strong>oned_as</strong> : {&#8216;row&#8217;, &#8216;column&#8217;}, optional</p>
+<blockquote class="last">
+<div><p>If &#8216;column&#8217;, write 1-D numpy arrays as column vectors.
+If &#8216;row&#8217;, write 1-D numpy arrays as row vectors.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">mio4.MatFile4Writer</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">mio5.MatFile5Writer</span></tt></p>
+</div>
+</dd></dl>
+
+<div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.select_scans">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">select_scans</tt><big>(</big><em>in_file</em>, <em>selected_scans</em>, <em>convert_3d=True</em>, <em>out_file=None</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.select_scans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a selected scan volumes from a 4D image.</p>
+</dd></dl>
+
+<div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.split_filename">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">split_filename</tt><big>(</big><em>fname</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.split_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split a filename into parts: path, base filename and extension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str</p>
+<blockquote>
+<div><p>file or path name</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pth</strong> : str</p>
+<blockquote>
+<div><p>base path from fname</p>
+</div></blockquote>
+<p><strong>fname</strong> : str</p>
+<blockquote>
+<div><p>filename from fname, without extension</p>
+</div></blockquote>
+<p><strong>ext</strong> : str</p>
+<blockquote class="last">
+<div><p>file extension from fname</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">split_filename</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pth</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">split_filename</span><span class="p">(</span><span class="s">&#39;/home/data/subject.nii.gz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pth</span>
+<span class="go">&#39;/home/data&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span>
+<span class="go">&#39;subject&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ext</span>
+<span class="go">&#39;.nii.gz&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div style='clear:both'></div><dl class="function">
+<dt id="procasl.preprocessing.spm_affine">
+<tt class="descclassname">procasl.preprocessing.</tt><tt class="descname">spm_affine</tt><big>(</big><em>in_file</em><big>)</big><a class="headerlink" href="#procasl.preprocessing.spm_affine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the affine transform of a nifti image.
+Mimics the spm function spm_get_space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_file</strong> : str</p>
+<blockquote>
+<div><p>Path to an existant nifti image.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>affine</strong> : numpy.ndarray of shape (4, 4)</p>
+<blockquote class="last">
+<div><p>The affine transformation matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div style='clear:both'></div></div>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">Average</span></tt>(**inputs)</td>
+<td>Compute average functional across time, keeping the affine of first scan.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">AverageInputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">AverageOutputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">BaseInterface</span></tt>(**inputs)</td>
+<td>Implements common interface functionality.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">BaseInterfaceInputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">Directory</span></tt>([value,&nbsp;auto_set,&nbsp;entries,&nbsp;exists])</td>
+<td>Defines a trait whose value must be the name of a directory using a C-level fast validator.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">File</span></tt>([value,&nbsp;filter,&nbsp;auto_set,&nbsp;entries,&nbsp;exists])</td>
+<td>Defines a trait whose value must be the name of a file using a C-level fast validator.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">GetM0</span></tt>(**inputs)</td>
+<td>Save the M0 scan from ASL 4D image (first scan).</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">GetM0InputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">GetM0OutputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">GetTagControl</span></tt>(**inputs)</td>
+<td>Save the tag/control sequence of a 4D ASL image (removes first scan).</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">GetTagControlInputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">GetTagControlOutputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">InputMultiPath</span></tt>([trait,&nbsp;value,&nbsp;minlen,&nbsp;...])</td>
+<td>Implements a user friendly traits that accepts one or more paths to files or directories.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">OutputMultiPath</span></tt>([trait,&nbsp;value,&nbsp;minlen,&nbsp;...])</td>
+<td>Implements a user friendly traits that accepts one or more paths to files or directories.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">Realign</span></tt>(**inputs)</td>
+<td>Realign functional scans.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">RealignInputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">RealignOutputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">Rescale</span></tt>(**inputs)</td>
+<td>Correct for T1 relaxation between different slices.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">RescaleInputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">RescaleOutputSpec</span></tt>(**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">TraitedSpec</span></tt>(**kwargs)</td>
+<td>Create a subclass with strict traits.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">procasl.preprocessing</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#examples-using-procasl-preprocessing-apply-mask">Examples using <tt class="docutils literal"><span class="pre">procasl.preprocessing.apply_mask</span></tt></a></li>
+<li><a class="reference internal" href="#examples-using-procasl-preprocessing-compute-brain-mask">Examples using <tt class="docutils literal"><span class="pre">procasl.preprocessing.compute_brain_mask</span></tt></a></li>
+<li><a class="reference internal" href="#examples-using-procasl-preprocessing-get-scans-number">Examples using <tt class="docutils literal"><span class="pre">procasl.preprocessing.get_scans_number</span></tt></a></li>
+<li><a class="reference internal" href="#examples-using-procasl-preprocessing-save-first-scan">Examples using <tt class="docutils literal"><span class="pre">procasl.preprocessing.save_first_scan</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="procasl.datasets.html"
+                        title="previous chapter">procasl.datasets</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="procasl.quantification.html"
+                        title="next chapter">procasl.quantification</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/modules/generated/procasl.preprocessing.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="procasl.quantification.html" title="procasl.quantification"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="procasl.datasets.html" title="procasl.datasets"
+             >previous</a> |</li>
+        <li><a href="../../index.html">procasl 0 documentation</a> &raquo;</li>
+          <li><a href="../../reference.html" >Procasl API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Bougacha.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

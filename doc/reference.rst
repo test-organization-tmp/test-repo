@@ -1,0 +1,14 @@
+============================
+Procasl API Reference
+============================
+
+.. currentmodule:: procasl
+
+.. autosummary::
+   :toctree: modules/generated/
+   :template: module.rst
+
+   datasets
+   preprocessing
+   quantification
+

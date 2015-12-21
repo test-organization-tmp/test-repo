@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>procasl.datasets &mdash; procasl 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="procasl 0 documentation" href="../../index.html" />
+    <link rel="up" title="Procasl API Reference" href="../../reference.html" />
+    <link rel="next" title="procasl.preprocessing" href="procasl.preprocessing.html" />
+    <link rel="prev" title="procasl.quantification" href="procasl.quantification.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="procasl.preprocessing.html" title="procasl.preprocessing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="procasl.quantification.html" title="procasl.quantification"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">procasl 0 documentation</a> &raquo;</li>
+          <li><a href="../../reference.html" accesskey="U">Procasl API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-procasl.datasets">
+<span id="procasl-datasets"></span><h1>procasl.datasets<a class="headerlink" href="#module-procasl.datasets" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="procasl.datasets.load_heroes_dataset">
+<tt class="descclassname">procasl.datasets.</tt><tt class="descname">load_heroes_dataset</tt><big>(</big><em>n_subjects=None</em>, <em>subjects_parent_directory='/volatile/asl_data/heroes/raw'</em>, <em>dataset_pattern={'basal ASL': 'fMRI/acquisition1/basal_rawASL*.nii'</em>, <em>'anat': 't1mri/acquisition1/anat*.nii'</em>, <em>'basal CBF': 'B1map/acquisition1/basal_relCBF*.nii'}</em><big>)</big><a class="headerlink" href="#procasl.datasets.load_heroes_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the NeuroSpin HEROES dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_subjects</strong> : int or None, optional</p>
+<blockquote>
+<div><p>Number of subjects to load, default to loading all subjects.</p>
+</div></blockquote>
+<p><strong>subjects_parent_directory</strong> : str, optional</p>
+<blockquote>
+<div><p>Path to the dataset folder containing all subjects folders.</p>
+</div></blockquote>
+<p><strong>dataset_pattern</strong> : dict, optional</p>
+<blockquote>
+<div><p>Input dictionary. Keys are the names of the images to load, values
+are strings specifying the unique relative pattern specifying the
+path to these images within each subject directory.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dataset</strong> : dict</p>
+<blockquote class="last">
+<div><p>The absolute paths to the images for all subjects. Keys are the same
+as the files_patterns keys, values are lists of strings.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="examples-using-procasl-datasets-load-heroes-dataset">
+<h3>Examples using <tt class="docutils literal"><span class="pre">procasl.datasets.load_heroes_dataset</span></tt><a class="headerlink" href="#examples-using-procasl-datasets-load-heroes-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbContainer" tooltip="A basic multiple subjects pipeline. CBF maps are normalized to the reference MNI template. "><div class="figure">
+<img alt="../../_images/sphx_glr_multiple_subjects_thumb.png" src="../../_images/sphx_glr_multiple_subjects_thumb.png" />
+<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/multiple_subjects.html#sphx-glr-auto-examples-pipelines-multiple-subjects-py"><em>Multiple subjects pipeline demo</em></a></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">procasl.datasets</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#examples-using-procasl-datasets-load-heroes-dataset">Examples using <tt class="docutils literal"><span class="pre">procasl.datasets.load_heroes_dataset</span></tt></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="procasl.quantification.html"
+                        title="previous chapter">procasl.quantification</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="procasl.preprocessing.html"
+                        title="next chapter">procasl.preprocessing</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/modules/generated/procasl.datasets.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="procasl.preprocessing.html" title="procasl.preprocessing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="procasl.quantification.html" title="procasl.quantification"
+             >previous</a> |</li>
+        <li><a href="../../index.html">procasl 0 documentation</a> &raquo;</li>
+          <li><a href="../../reference.html" >Procasl API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Bougacha.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

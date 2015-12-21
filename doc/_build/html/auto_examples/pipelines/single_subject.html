@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>One subject pipeline demo &mdash; procasl 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="procasl 0 documentation" href="../../index.html" />
+    <link rel="up" title="Gallery of Examples" href="../index.html" />
+    <link rel="next" title="Procasl API Reference" href="../../reference.html" />
+    <link rel="prev" title="Multiple subjects pipeline demo" href="multiple_subjects.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../reference.html" title="Procasl API Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="multiple_subjects.html" title="Multiple subjects pipeline demo"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">procasl 0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Gallery of Examples</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="one-subject-pipeline-demo">
+<span id="sphx-glr-auto-examples-pipelines-single-subject-py"></span><h1>One subject pipeline demo<a class="headerlink" href="#one-subject-pipeline-demo" title="Permalink to this headline">¶</a></h1>
+<p>This example gives a basic single subject pipeline for computing CBF from
+ASL data.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">nipype.interfaces.spm</span> <span class="kn">as</span> <span class="nn">spm</span>
+<span class="kn">from</span> <span class="nn">nipype.caching</span> <span class="kn">import</span> <a href="http://nipy.org/nipype/users/caching_tutorial.html#nipype.caching.Memory"><span class="n">Memory</span></a>
+
+<span class="kn">from</span> <span class="nn">procasl</span> <span class="kn">import</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="n">quantification</span>
+
+<span class="c"># Create a memory context</span>
+<span class="n">mem</span> <span class="o">=</span> <a href="http://nipy.org/nipype/users/caching_tutorial.html#nipype.caching.Memory"><span class="n">Memory</span></a><span class="p">(</span><span class="s">&#39;/tmp/no_workflow&#39;</span><span class="p">)</span>
+
+<span class="c"># Give data location</span>
+<span class="n">func_file</span> <span class="o">=</span> <span class="s">&#39;/tmp/func.nii&#39;</span>
+<span class="n">anat_file</span> <span class="o">=</span> <span class="s">&#39;/tmp/anat.nii&#39;</span>
+
+<span class="c"># Set spm paths</span>
+<span class="n">matlab_cmd</span> <span class="o">=</span> <span class="s">&#39;/i2bm/local/spm8-standalone/run_spm8.sh &#39;</span> <span class="o">+</span>\
+    <span class="s">&#39;/i2bm/local/spm8-standalone/mcr/v713 script&#39;</span>
+<span class="n">spm</span><span class="o">.</span><span class="n">SPMCommand</span><span class="o">.</span><span class="n">set_mlab_paths</span><span class="p">(</span><span class="n">matlab_cmd</span><span class="o">=</span><span class="n">matlab_cmd</span><span class="p">,</span> <span class="n">use_mcr</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;/i2bm/local/spm8-standalone/spm8_mcr/spm8/&#39;</span><span class="p">]</span>  <span class="c"># TODO: check needed</span>
+
+<span class="c"># Get Tag/Control sequence</span>
+<span class="n">get_tag_ctl</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">GetTagControl</span><span class="p">)</span>
+<span class="n">out_get_tag_ctl</span> <span class="o">=</span> <span class="n">get_tag_ctl</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">func_file</span><span class="p">)</span>
+
+<span class="c"># Rescale</span>
+<span class="n">rescale</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">Rescale</span><span class="p">)</span>
+<span class="n">out_rescale</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">out_get_tag_ctl</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">tag_ctl_file</span><span class="p">,</span>
+                      <span class="n">ss_tr</span><span class="o">=</span><span class="mf">35.4</span><span class="p">,</span> <span class="n">t_i_1</span><span class="o">=</span><span class="mf">800.</span><span class="p">,</span> <span class="n">t_i_2</span><span class="o">=</span><span class="mf">1800.</span><span class="p">)</span>
+
+<span class="c"># Realign to first scan</span>
+<span class="n">realign</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">Realign</span><span class="p">)</span>
+<span class="n">out_realign</span> <span class="o">=</span> <span class="n">realign</span><span class="p">(</span>
+    <span class="n">in_file</span><span class="o">=</span><span class="n">out_rescale</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">rescaled_file</span><span class="p">,</span>
+    <span class="n">register_to_mean</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">correct_tagging</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">)</span>
+
+<span class="c"># Compute mean ASL</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">Average</span><span class="p">)</span>
+<span class="n">out_average</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">out_realign</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">realigned_files</span><span class="p">)</span>
+
+<span class="c"># Segment anat</span>
+<span class="n">segment</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Segment</span><span class="p">)</span>
+<span class="n">out_segment</span> <span class="o">=</span> <span class="n">segment</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">anat_file</span><span class="p">,</span>
+    <span class="n">gm_output_type</span><span class="o">=</span><span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">],</span>
+    <span class="n">wm_output_type</span><span class="o">=</span><span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">],</span>
+    <span class="n">save_bias_corrected</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">)</span>
+
+<span class="c"># Coregister anat to mean ASL</span>
+<span class="n">coregister_anat</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Coregister</span><span class="p">)</span>
+<span class="n">out_coregister_anat</span> <span class="o">=</span> <span class="n">coregister_anat</span><span class="p">(</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">out_average</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">mean_file</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">anat_file</span><span class="p">,</span>
+    <span class="n">apply_to_files</span><span class="o">=</span><span class="p">[</span><span class="n">out_segment</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">native_gm_image</span><span class="p">,</span>
+                    <span class="n">out_segment</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">native_wm_image</span><span class="p">],</span>
+    <span class="n">write_interp</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">jobtype</span><span class="o">=</span><span class="s">&#39;estwrite&#39;</span><span class="p">,</span>
+    <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">)</span>
+
+<span class="c"># Get M0</span>
+<span class="n">get_m0</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">GetM0</span><span class="p">)</span>
+<span class="n">out_get_m0</span> <span class="o">=</span> <span class="n">get_m0</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">func_file</span><span class="p">)</span>
+
+<span class="c"># Coregister M0 to mean ASL</span>
+<span class="n">coregister_m0</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Coregister</span><span class="p">)</span>
+<span class="n">out_coregister_m0</span> <span class="o">=</span> <span class="n">coregister_m0</span><span class="p">(</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">out_average</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">mean_file</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">out_get_m0</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">m0_file</span><span class="p">,</span>
+    <span class="n">write_interp</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">jobtype</span><span class="o">=</span><span class="s">&#39;estwrite&#39;</span><span class="p">,</span>
+    <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">)</span>
+
+<span class="c"># Smooth M0</span>
+<span class="n">smooth_m0</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Smooth</span><span class="p">)</span>
+<span class="n">out_smooth_m0</span> <span class="o">=</span> <span class="n">smooth_m0</span><span class="p">(</span>
+    <span class="n">in_files</span><span class="o">=</span><span class="n">out_coregister_m0</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">coregistered_source</span><span class="p">,</span>
+    <span class="n">fwhm</span><span class="o">=</span><span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">],</span>
+    <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">)</span>
+
+<span class="c"># Compute perfusion</span>
+<span class="n">n_scans</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">get_scans_number</span><span class="p">(</span><span class="n">out_realign</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">realigned_files</span><span class="p">)</span>
+<span class="n">ctl_scans</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_scans</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">tag_scans</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_scans</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">perfusion_file</span> <span class="o">=</span> <span class="n">quantification</span><span class="o">.</span><span class="n">compute_perfusion</span><span class="p">(</span>
+    <span class="n">out_realign</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">realigned_files</span><span class="p">,</span>
+    <span class="n">ctl_scans</span><span class="o">=</span><span class="n">ctl_scans</span><span class="p">,</span>
+    <span class="n">tag_scans</span><span class="o">=</span><span class="n">tag_scans</span><span class="p">)</span>
+
+<span class="c"># Compute CBF</span>
+<span class="n">quantify</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">quantification</span><span class="o">.</span><span class="n">QuantifyCBF</span><span class="p">)</span>
+<span class="n">out_quantify</span> <span class="o">=</span> <span class="n">quantify</span><span class="p">(</span>
+    <span class="n">perfusion_file</span><span class="o">=</span><span class="n">perfusion_file</span><span class="p">,</span>
+    <span class="n">m0_file</span><span class="o">=</span><span class="n">out_smooth_m0</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">smoothed_files</span><span class="p">,</span>
+    <span class="n">tr</span><span class="o">=</span><span class="mf">2500.</span><span class="p">,</span>
+    <span class="n">t1_gm</span><span class="o">=</span><span class="mf">1331.</span><span class="p">)</span>
+
+<span class="c"># Mask CBF map with brain mask</span>
+<span class="n">brain_mask_file</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">compute_brain_mask</span><span class="p">(</span>
+    <span class="n">out_coregister_anat</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">coregistered_source</span><span class="p">,</span> <span class="n">frac</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cbf_map</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">out_quantify</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">cbf_file</span><span class="p">,</span>
+                                   <span class="n">brain_mask_file</span><span class="p">)</span>
+
+<span class="c"># Plot CBF map on top of anat</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+    <span class="n">cbf_map</span><span class="p">,</span>
+    <span class="n">bg_img</span><span class="o">=</span><span class="n">out_coregister_anat</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">coregistered_source</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">150.</span><span class="p">,</span>
+    <span class="n">display_mode</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Total running time of the script:</strong>
+(0 minutes 0.000 seconds)</p>
+<p><strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/single_subject.py"><tt class="xref download docutils literal"><span class="pre">single_subject.py</span></tt></a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="multiple_subjects.html"
+                        title="previous chapter">Multiple subjects pipeline demo</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../reference.html"
+                        title="next chapter">Procasl API Reference</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/auto_examples/pipelines/single_subject.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../reference.html" title="Procasl API Reference"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="multiple_subjects.html" title="Multiple subjects pipeline demo"
+             >previous</a> |</li>
+        <li><a href="../../index.html">procasl 0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Gallery of Examples</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Bougacha.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
