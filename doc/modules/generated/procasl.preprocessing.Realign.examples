@@ -23,6 +23,24 @@ Examples using ``procasl.preprocessing.Realign``
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. ">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_single_subject_thumb.png
+
+        :ref:`sphx_glr_auto_examples_single_subject.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_single_subject.py`
+
+.. raw:: html
+
     <div class="sphx-glr-thumbContainer" tooltip="A basic multiple subjects pipeline. CBF maps are normalized to the reference MNI template. ">
 
 .. only:: html

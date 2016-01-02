@@ -12,7 +12,6 @@
    {% for item in functions %}
    .. autofunction:: {{ item }}
 
-
    .. raw:: html
 
 	       <div style='clear:both'></div>
@@ -27,7 +26,7 @@
    -------
 
    .. autosummary::
-   {% for item in classes %}
+   {% for item in classes %}    
       {{ item }}
    {%- endfor %}
    {% endif %}

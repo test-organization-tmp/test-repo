@@ -22,9 +22,6 @@ functional.
     from nipype.caching import Memory
     mem = Memory('/tmp')
 
-    # Give the paths to spm
-    paths = ['/i2bm/local/spm12-standalone-6472/spm12_mcr/spm12/']
-
     # Compute mean functional
     from procasl import preprocessing
     average = mem.cache(preprocessing.Average)
@@ -43,7 +40,8 @@ functional.
     import matplotlib.pylab as plt
     from nilearn import plotting
     figure = plt.figure(figsize=(5, 4))
-    display = plotting.plot_anat(mean_func, figure=figure,
+    display = plotting.plot_anat(mean_func, figure=figure, display_mode='z',
+                                 cut_coords=(-7, 32),
                                  title='anat edges on mean functional')
     display.add_edges(out_coregister.outputs.coregistered_source)
     figure.suptitle('Impact of tagging correction')

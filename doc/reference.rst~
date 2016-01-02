@@ -8,6 +8,11 @@ Procasl API Reference
    :toctree: modules/generated/
    :template: module.rst
 
-   preprocessing.Coregister.examples
-   quantification.compute_perfusion.examples
+   datasets
+   preprocessing
+   quantification
+
+
+.. autosummary::
+   :toctree: interfaces/generated/
 

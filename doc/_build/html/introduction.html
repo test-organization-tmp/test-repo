@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction: procasl &mdash; Arterial Spin Labeing Data Processing</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Arterial Spin Labeing Data Processing" href="index.html"/>
+        <link rel="next" title="Gallery of Examples" href="auto_examples/index.html"/>
+        <link rel="prev" title="Welcome to procasl’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> procasl
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Introduction: procasl</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-procasl-preprocessing-and-quantification-of-asl">What is procasl: preprocessing and quantification of ASL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#whetting-your-appetite">Whetting Your Appetite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asl-labeling-arterial-blood-water-magnetically-before-imaging">ASL: labeling arterial blood water magnetically before imaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asl-allows-weighting-of-the-mri-signal-by-cerebral-blood-flow">ASL allows weighting of the MRI signal by cerebral blood flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quantification-from-asl-images-to-cbf">Quantification: from ASL images to CBF</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Secondary gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Procasl API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">procasl</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Introduction: procasl</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction-procasl">
+<h1>Introduction: procasl<a class="headerlink" href="#introduction-procasl" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title first"><strong>Contents</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="#what-is-procasl-preprocessing-and-quantification-of-asl" id="id1">What is procasl: preprocessing and quantification of ASL</a></li>
+<li><a class="reference internal" href="#installation" id="id2">Installation</a></li>
+</ul>
+</div>
+<div class="section" id="what-is-procasl-preprocessing-and-quantification-of-asl">
+<h2><a class="toc-backref" href="#id1">What is procasl: preprocessing and quantification of ASL</a><a class="headerlink" href="#what-is-procasl-preprocessing-and-quantification-of-asl" title="Permalink to this headline">¶</a></h2>
+<div class="topic">
+<p class="topic-title first"><strong>Why use procasl?</strong></p>
+<p>Procasl builds relevant <strong>pipelines</strong> for processing ASL data(
+<span class="xref std std-ref">single subject pipeline</span>,
+<span class="xref std std-ref">second level pipeline</span>).</p>
+<p>Procasl can be used on <span class="xref std std-ref">pulsed ASL</span>,
+<span class="xref std std-ref">pseudo-continuous ASL</span>, or
+<span class="xref std std-ref">continuous ASL</span> data.</p>
+</div>
+<div class="section" id="whetting-your-appetite">
+<h3>Whetting Your Appetite<a class="headerlink" href="#whetting-your-appetite" title="Permalink to this headline">¶</a></h3>
+<p>Ideally, scientists would like to measure neural activity directly. However, as this is nearly impossible under normal circumstances, most researchers have chosen to observe the changes in the metabolic activity that follow mental work using techniques such as BOLD.</p>
+<p>Though measuring changes in blood flow as a consequence of neural activity would be the next most direct approach, this was formerly only obtainable through the use of invasive imaging techniques utilizing exogenous contrast agents.</p>
+<p>Thus, most researchers opted to use the BOLD technique, which though dependent on cerebral blood flow (CBF), does not give a direct measure of it. However, due to recent advances in MR imaging, it is now possible to capture CBF measurements entirely non-invasively.</p>
+<p>Prior to ASL, the techniques used for determining cerebral blood flow were rather invasive and involved the use of exogenous contrast agents, such as like the 15O H2O radiotracer in Positron Emission Tomography (PET). In this technique, researchers inject a radiotracer (which was essentially radioactively labeled water) into the participant. This radiotracer would then circulate through the body&#8217;s vascular system, ultimately diffusing freely into brain tissue along with the blood. The radioactive tracer would begin to decay almost immediately, emitting tiny positively charged particles (called positrons) which could then be detected using specialized equipment. As the radiotracer travels with the blood, the amount of radioactvity detected reflects blood flow. That is to say, areas which received a lot of blood should also have received a lot of radioactively labeled water and consequently shown higher levels of radioactive positron emissions. Thus, in for each region of brain tissue, uptake of the radiotracer would be proportional to blood flow.</p>
+<p>Similar to PET techniques, ASL utilizes a tracer of sorts. In ASL, arterial blood water is magnetically labeled then imaged. First, arterial blood water is magnetically labeled just below the region (slice) of interest by applying a 180 degree radiofrequency (RF) inversion pulse. The result of this pulse is inversion of the net magnetization of the blood water. In other words, the water molecules within the arterial blood are labeled magnetically. After a period of time (called the transit time), this &#8216;paramagnetic tracer’ flows into slice of interest where it exchanges with tissue water. The inflowing inverted spins within the blood water alter total tissue magnetization, reducing it and, consequently, the MR signal &amp; image intensity. During this time, an image is taken (called the tag image).</p>
+<p>The experiment is then repeated without labeling the arterial blood to create another image (called the control image). The control image and the tag image are subtracted to produce a perfusion image. This image will reflect the amount of arterial blood delivered to each voxel within the slice within the transit time.</p>
+</div>
+<div class="section" id="asl-labeling-arterial-blood-water-magnetically-before-imaging">
+<h3>ASL: labeling arterial blood water magnetically before imaging<a class="headerlink" href="#asl-labeling-arterial-blood-water-magnetically-before-imaging" title="Permalink to this headline">¶</a></h3>
+<p>Magnetization is tagged sequentially to capture the flowing of the arterial blood.
+Many modalities and many sequences exist, and ASL techniques is an active research field.
+More on <a class="reference external" href="http://fmri.research.umich.edu/research/main_topics/asl.php">http://fmri.research.umich.edu/research/main_topics/asl.php</a></p>
+</div>
+<div class="section" id="asl-allows-weighting-of-the-mri-signal-by-cerebral-blood-flow">
+<h3>ASL allows weighting of the MRI signal by cerebral blood flow<a class="headerlink" href="#asl-allows-weighting-of-the-mri-signal-by-cerebral-blood-flow" title="Permalink to this headline">¶</a></h3>
+<p>The cerebral blood flow (CBF) is a fundamental physiological quantity, closely related to brain function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Diagnosis:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">An accurate hemodynamics estimation:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Assessing the neural contribution in activation BOLD signal:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="quantification-from-asl-images-to-cbf">
+<h3>Quantification: from ASL images to CBF<a class="headerlink" href="#quantification-from-asl-images-to-cbf" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">General kinetic model:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">The parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="installation">
+<h2><a class="toc-backref" href="#id2">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p><strong>Configuring FSL</strong>: On an Ubuntu system, FSL is usually installed at :: /usr/share/fsl. You need to add this location to your .bashrc file. Edit this file by running the shell command:</p>
+<div class="highlight-python"><div class="highlight"><pre>gedit ~/.bashrc
+</pre></div>
+</div>
+<p>and add the following lines:</p>
+<div class="highlight-python"><div class="highlight"><pre># FSL
+FSLDIR=/usr/share/fsl
+. ${FSLDIR}/5.0/etc/fslconf/fsl.sh
+PATH=${FSLDIR}/5.0/bin:${PATH}
+export FSLDIR PATH
+</pre></div>
+</div>
+<p>To test if FSL is correctly installed, open a new terminal and type in the shell command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">fsl</span>
+</pre></div>
+</div>
+<p>You should see the FSL GUI with the version number in the header.</p>
+<p><strong>Configuring SPM</strong>: Add the following lines specifying the location of the spm folder to your .bashrc file:</p>
+<div class="highlight-python"><div class="highlight"><pre># SPM8
+export SPM_PATH=/i2bm/local/spm8-standalone/spm8_mcr/spm8
+</pre></div>
+</div>
+<p><strong>Using SPM MCR</strong>: If you don&#8217;t have a matlab licence, specify the location of the Matlab Compiler Runtime and force the
+use of the standalone MCR version of spm by appending the following lines to the .bashrc</p>
+<blockquote>
+<div># SPM MCR
+export SPMMCRCMD=&#8217;/home/salma/Téléchargements/spm8/run_spm8.sh /home/salma/Téléchargements/MCR/v713 script&#8217;
+export FORCE_SPMMCR=&#8217;True&#8217;</div></blockquote>
+<p><strong>Downloading procasl:</strong> Run the shell command:</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/salma1601/process-asl
+</pre></div>
+</div>
+<p><strong>Installing procasl:</strong> In the <code class="docutils literal"><span class="pre">process-asl</span></code> directory created by the previous step, run
+(again, as a shell command):</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py install --user
+</pre></div>
+</div>
+<p><strong>Testing the installation:</strong> To check whether everything is set up correctly, open IPython and type
+in the following line:</p>
+<div class="highlight-python"><div class="highlight"><pre>In [1]: import procasl
+</pre></div>
+</div>
+<p>If no error occurs, you have installed procasl correctly.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="auto_examples/index.html" class="btn btn-neutral float-right" title="Gallery of Examples" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to procasl’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, The procasl developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

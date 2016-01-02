@@ -1,7 +1,7 @@
 {{ fullname }}
 {{ underline }}
 
-.. currentmodule:: {{ module }}
+.. automodule:: {{ fullname }}
 
    {% block functions %}
    {% if functions %}
@@ -11,8 +11,7 @@
 
    {% for item in functions %}
    .. autofunction:: {{ item }}
-
-   .. include:: {{fullname}}.{{item}}.examples
+      :members:
 
    .. raw:: html
 
@@ -28,7 +27,7 @@
    -------
 
    .. autosummary::
-   {% for item in classes %}
+   {% for item in classes %}    
       {{ item }}
    {%- endfor %}
    {% endif %}

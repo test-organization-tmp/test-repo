@@ -1,4 +1,4 @@
-.. _sin_examples:
+.. _sin_examples-index:
 
 The sin function
 ----------------

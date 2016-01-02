@@ -1,95 +1,188 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Gallery of Examples &mdash; Arterial Spin Labeing Data Processing</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>Gallery of Examples &mdash; procasl 0 documentation</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
     <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="procasl 0 documentation" href="../index.html" />
-    <link rel="next" title="Coregistration demo" href="plot_heroes_coregister.html" />
-    <link rel="prev" title="Welcome to procasl’s documentation!" href="../index.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="plot_heroes_coregister.html" title="Coregistration demo"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../index.html" title="Welcome to procasl’s documentation!"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">procasl 0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+    <link rel="top" title="Arterial Spin Labeing Data Processing" href="../index.html"/>
+        <link rel="next" title="Coregistration demo" href="plot_heroes_coregister.html"/>
+        <link rel="prev" title="Introduction: procasl" href="../introduction.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> procasl
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction: procasl</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Gallery of Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-examples">General examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plot_heroes_coregister.html">Coregistration demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_heroes_realign.html">Realignment demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_heroes_rescale.html">Rescaling demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="single_subject.html">One subject pipeline demo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-sin-function">The sin function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/multiple_subjects.html">Multiple subjects pipeline demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/single_subject.html">One subject pipeline demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Secondary gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Procasl API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">procasl</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Gallery of Examples</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="gallery-of-examples">
 <span id="examples-index"></span><h1>Gallery of Examples<a class="headerlink" href="#gallery-of-examples" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="general-examples">
 <span id="id1"></span><h2>General examples<a class="headerlink" href="#general-examples" title="Permalink to this headline">¶</a></h2>
 <p>General-purpose and introductory examples from the sphinx-gallery</p>
-<div class="sphx-glr-thumbContainer" tooltip="This example shows a basic coregistration step from anatomical to mean functional. "><div class="figure">
+<div class="sphx-glr-thumbContainer" tooltip="This example shows a basic coregistration step from anatomical to mean functional. "><div class="figure" id="id2">
 <img alt="../_images/sphx_glr_plot_heroes_coregister_thumb.png" src="../_images/sphx_glr_plot_heroes_coregister_thumb.png" />
-<p class="caption"><a class="reference internal" href="plot_heroes_coregister.html#sphx-glr-auto-examples-plot-heroes-coregister-py"><em>Coregistration demo</em></a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_heroes_coregister.html#sphx-glr-auto-examples-plot-heroes-coregister-py"><span>Coregistration demo</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbContainer" tooltip="This example compares standard realignement to realignement with tagging correction. "><div class="figure">
+<div class="sphx-glr-thumbContainer" tooltip="This example compares standard realignement to realignement with tagging correction. "><div class="figure" id="id3">
 <img alt="../_images/sphx_glr_plot_heroes_realign_thumb.png" src="../_images/sphx_glr_plot_heroes_realign_thumb.png" />
-<p class="caption"><a class="reference internal" href="plot_heroes_realign.html#sphx-glr-auto-examples-plot-heroes-realign-py"><em>Realignment demo</em></a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_heroes_realign.html#sphx-glr-auto-examples-plot-heroes-realign-py"><span>Realignment demo</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbContainer" tooltip="This example compares a volume before and after T1 correction. "><div class="figure">
-<img alt="../_images/sphx_glr_plot_heroes_rescaling_thumb.png" src="../_images/sphx_glr_plot_heroes_rescaling_thumb.png" />
-<p class="caption"><a class="reference internal" href="plot_heroes_rescaling.html#sphx-glr-auto-examples-plot-heroes-rescaling-py"><em>Rescaling demo</em></a></p>
+<div class="sphx-glr-thumbContainer" tooltip="This example compares a volume before and after T1 correction. "><div class="figure" id="id4">
+<img alt="../_images/sphx_glr_plot_heroes_rescale_thumb.png" src="../_images/sphx_glr_plot_heroes_rescale_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_heroes_rescale.html#sphx-glr-auto-examples-plot-heroes-rescale-py"><span>Rescaling demo</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. "><div class="figure" id="id5">
+<img alt="../_images/sphx_glr_single_subject_thumb.png" src="../_images/sphx_glr_single_subject_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="single_subject.html#sphx-glr-auto-examples-single-subject-py"><span>One subject pipeline demo</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
 <div style='clear:both'></div></div>
 <div class="section" id="the-sin-function">
-<span id="sin-examples"></span><h2>The sin function<a class="headerlink" href="#the-sin-function" title="Permalink to this headline">¶</a></h2>
+<span id="sin-examples-index"></span><h2>The sin function<a class="headerlink" href="#the-sin-function" title="Permalink to this headline">¶</a></h2>
 <p>Specific examples for the sin function. Saved in the examples
 directory in a subfolder</p>
-<div class="sphx-glr-thumbContainer" tooltip="A basic multiple subjects pipeline. CBF maps are normalized to the reference MNI template. "><div class="figure">
+<div class="sphx-glr-thumbContainer" tooltip="A basic multiple subjects pipeline. CBF maps are normalized to the reference MNI template. "><div class="figure" id="id6">
 <img alt="../_images/sphx_glr_multiple_subjects_thumb.png" src="../_images/sphx_glr_multiple_subjects_thumb.png" />
-<p class="caption"><a class="reference internal" href="pipelines/multiple_subjects.html#sphx-glr-auto-examples-pipelines-multiple-subjects-py"><em>Multiple subjects pipeline demo</em></a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="pipelines/multiple_subjects.html#sphx-glr-auto-examples-pipelines-multiple-subjects-py"><span>Multiple subjects pipeline demo</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. "><div class="figure">
-<img alt="../_images/sphx_glr_single_subject_thumb.png" src="../_images/sphx_glr_single_subject_thumb.png" />
-<p class="caption"><a class="reference internal" href="pipelines/single_subject.html#sphx-glr-auto-examples-pipelines-single-subject-py"><em>One subject pipeline demo</em></a></p>
+<div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. "><div class="figure" id="id7">
+<img alt="../_images/sphx_glr_single_subject_thumb1.png" src="../_images/sphx_glr_single_subject_thumb1.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="pipelines/single_subject.html#sphx-glr-auto-examples-pipelines-single-subject-py"><span>One subject pipeline demo</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -97,73 +190,71 @@ directory in a subfolder</p>
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Gallery of Examples</a><ul>
-<li><a class="reference internal" href="#general-examples">General examples</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#the-sin-function">The sin function</a><ul>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_heroes_coregister.html" class="btn btn-neutral float-right" title="Coregistration demo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../introduction.html" class="btn btn-neutral" title="Introduction: procasl" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../index.html"
-                        title="previous chapter">Welcome to procasl&#8217;s documentation!</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="plot_heroes_coregister.html"
-                        title="next chapter">Coregistration demo</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/auto_examples/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, The procasl developers.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div> 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="plot_heroes_coregister.html" title="Coregistration demo"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../index.html" title="Welcome to procasl’s documentation!"
-             >previous</a> |</li>
-        <li><a href="../index.html">procasl 0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2015, Bougacha.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

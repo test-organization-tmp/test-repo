@@ -1,59 +1,143 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Realignment demo &mdash; Arterial Spin Labeing Data Processing</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>Realignment demo &mdash; procasl 0 documentation</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
     <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="procasl 0 documentation" href="../index.html" />
-    <link rel="up" title="Gallery of Examples" href="index.html" />
-    <link rel="next" title="Rescaling demo" href="plot_heroes_rescaling.html" />
-    <link rel="prev" title="Coregistration demo" href="plot_heroes_coregister.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="plot_heroes_rescaling.html" title="Rescaling demo"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="plot_heroes_coregister.html" title="Coregistration demo"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">procasl 0 documentation</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">Gallery of Examples</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+    <link rel="top" title="Arterial Spin Labeing Data Processing" href="../index.html"/>
+        <link rel="up" title="Gallery of Examples" href="index.html"/>
+        <link rel="next" title="Rescaling demo" href="plot_heroes_rescale.html"/>
+        <link rel="prev" title="Coregistration demo" href="plot_heroes_coregister.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> procasl
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction: procasl</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Gallery of Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#general-examples">General examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plot_heroes_coregister.html">Coregistration demo</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">Realignment demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_heroes_rescale.html">Rescaling demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="single_subject.html">One subject pipeline demo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#the-sin-function">The sin function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Secondary gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Procasl API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">procasl</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Gallery of Examples</a> &raquo;</li>
+      
+    <li>Realignment demo</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="realignment-demo">
 <span id="sphx-glr-auto-examples-plot-heroes-realign-py"></span><h1>Realignment demo<a class="headerlink" href="#realignment-demo" title="Permalink to this headline">¶</a></h1>
@@ -61,11 +145,10 @@
 correction.</p>
 <p>../examples/plot_heroes_realign.py is not compiling:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Create a memory context</span>
-<span class="kn">from</span> <span class="nn">nipype.caching</span> <span class="kn">import</span> <a href="http://nipy.org/nipype/users/caching_tutorial.html#nipype.caching.Memory"><span class="n">Memory</span></a>
-<span class="n">mem</span> <span class="o">=</span> <a href="http://nipy.org/nipype/users/caching_tutorial.html#nipype.caching.Memory"><span class="n">Memory</span></a><span class="p">(</span><span class="s">&#39;/tmp&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nipype.caching</span> <span class="kn">import</span> <span class="n">Memory</span>
+<span class="n">mem</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">(</span><span class="s">&#39;/tmp&#39;</span><span class="p">)</span>
 
-<span class="c"># Give the paths to spm and to the 4D ASL image</span>
-<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;/i2bm/local/spm12-standalone-6472/spm12_mcr/spm12/&#39;</span><span class="p">]</span>
+<span class="c"># Give the path to the 4D ASL image</span>
 <span class="n">raw_asl_file</span> <span class="o">=</span> <span class="s">&#39;/tmp/func.nii&#39;</span>
 
 <span class="c"># Realign with and without tagging correction</span>
@@ -74,88 +157,98 @@ correction.</p>
 <span class="n">realign</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">Realign</span><span class="p">)</span>
 <span class="n">x_translation</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">correct_tagging</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]:</span>
-    <span class="n">out_realign</span> <span class="o">=</span> <span class="n">realign</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">raw_asl_file</span><span class="p">,</span> <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">,</span>
+    <span class="n">out_realign</span> <span class="o">=</span> <span class="n">realign</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">raw_asl_file</span><span class="p">,</span>
                           <span class="n">correct_tagging</span><span class="o">=</span><span class="n">correct_tagging</span><span class="p">)</span>
     <span class="n">x_translation</span><span class="p">[</span><span class="n">correct_tagging</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span>
         <span class="n">out_realign</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">realignment_parameters</span><span class="p">)[:,</span> <span class="mi">2</span><span class="p">]</span>
 
 <span class="c"># Plot x-translation parameters with and without tagging correction</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="n">figure</span><span class="p">,</span> <span class="p">(</span><span class="n">axes1</span><span class="p">,</span> <span class="n">axes2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">correct_tagging</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">],</span>
                                          <span class="p">[</span><span class="s">&#39;corrected&#39;</span><span class="p">,</span> <span class="s">&#39;uncorrected&#39;</span><span class="p">],</span> <span class="s">&#39;rb&#39;</span><span class="p">):</span>
-    <span class="n">axes1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_translation</span><span class="p">[</span><span class="n">correct_tagging</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-<span class="n">axes1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;translation in x [mm]&#39;</span><span class="p">)</span>
-<span class="n">axes1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">axes2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_translation</span><span class="p">[</span><span class="bp">True</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_translation</span><span class="p">[</span><span class="bp">False</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">axes2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;difference [mm]&#39;</span><span class="p">)</span>
-<span class="n">axes2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;frame&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_translation</span><span class="p">[</span><span class="n">correct_tagging</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;translation in x [mm]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_translation</span><span class="p">[</span><span class="bp">True</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_translation</span><span class="p">[</span><span class="bp">False</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;difference [mm]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;frame&#39;</span><span class="p">)</span>
 <span class="n">figure</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">&#39;Impact of tagging correction&#39;</span><span class="p">)</span>
-<span class="n">figure</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Total running time of the script:</strong>
 (0 minutes 0.000 seconds)</p>
-<p><strong>Download Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_heroes_realign.py"><tt class="xref download docutils literal"><span class="pre">plot_heroes_realign.py</span></tt></a></p>
+<p><strong>Download Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_heroes_realign.py"><code class="xref download docutils literal"><span class="pre">plot_heroes_realign.py</span></code></a></p>
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="plot_heroes_coregister.html"
-                        title="previous chapter">Coregistration demo</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="plot_heroes_rescaling.html"
-                        title="next chapter">Rescaling demo</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/auto_examples/plot_heroes_realign.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_heroes_rescale.html" class="btn btn-neutral float-right" title="Rescaling demo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_heroes_coregister.html" class="btn btn-neutral" title="Coregistration demo" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, The procasl developers.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div> 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="plot_heroes_rescaling.html" title="Rescaling demo"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="plot_heroes_coregister.html" title="Coregistration demo"
-             >previous</a> |</li>
-        <li><a href="../index.html">procasl 0 documentation</a> &raquo;</li>
-          <li><a href="index.html" >Gallery of Examples</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2015, Bougacha.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

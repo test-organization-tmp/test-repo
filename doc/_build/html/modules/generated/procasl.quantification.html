@@ -1,55 +1,141 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>procasl.quantification &mdash; Arterial Spin Labeing Data Processing</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>procasl.quantification &mdash; procasl 0 documentation</title>
-    
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="procasl 0 documentation" href="../../index.html" />
-    <link rel="up" title="Procasl API Reference" href="../../reference.html" />
-    <link rel="prev" title="procasl.preprocessing" href="procasl.preprocessing.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="procasl.preprocessing.html" title="procasl.preprocessing"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">procasl 0 documentation</a> &raquo;</li>
-          <li><a href="../../reference.html" accesskey="U">Procasl API Reference</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+    <link rel="top" title="Arterial Spin Labeing Data Processing" href="../../index.html"/>
+        <link rel="up" title="Procasl API Reference" href="../../reference.html"/>
+        <link rel="prev" title="procasl.preprocessing" href="procasl.preprocessing.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> procasl
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction: procasl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../auto_examples/index.html">Gallery of Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Secondary gallery</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Procasl API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="procasl.datasets.html">procasl.datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="procasl.preprocessing.html">procasl.preprocessing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">procasl.quantification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">procasl</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../reference.html">Procasl API Reference</a> &raquo;</li>
+      
+    <li>procasl.quantification</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="module-procasl.quantification">
 <span id="procasl-quantification"></span><h1>procasl.quantification<a class="headerlink" href="#module-procasl.quantification" title="Permalink to this headline">¶</a></h1>
@@ -57,13 +143,13 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="procasl.quantification.check_images">
-<tt class="descclassname">procasl.quantification.</tt><tt class="descname">check_images</tt><big>(</big><em>file1</em>, <em>file2</em><big>)</big><a class="headerlink" href="#procasl.quantification.check_images" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">procasl.quantification.</code><code class="descname">check_images</code><span class="sig-paren">(</span><em>file1</em>, <em>file2</em><span class="sig-paren">)</span><a class="headerlink" href="#procasl.quantification.check_images" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that 2 images have the same affines and data shapes.</p>
 </dd></dl>
 
 <div style='clear:both'></div><dl class="function">
 <dt id="procasl.quantification.compute_perfusion">
-<tt class="descclassname">procasl.quantification.</tt><tt class="descname">compute_perfusion</tt><big>(</big><em>in_file</em>, <em>ctl_scans=None</em>, <em>tag_scans=None</em><big>)</big><a class="headerlink" href="#procasl.quantification.compute_perfusion" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">procasl.quantification.</code><code class="descname">compute_perfusion</code><span class="sig-paren">(</span><em>in_file</em>, <em>ctl_scans=None</em>, <em>tag_scans=None</em><span class="sig-paren">)</span><a class="headerlink" href="#procasl.quantification.compute_perfusion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the mean perfusion image from a functional ASL sequence. The
 ASL sequence is assumed aligned.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -94,19 +180,9 @@ ASL sequence is assumed aligned.</p>
 </table>
 </dd></dl>
 
-<div class="section" id="examples-using-procasl-quantification-compute-perfusion">
-<h3>Examples using <tt class="docutils literal"><span class="pre">procasl.quantification.compute_perfusion</span></tt><a class="headerlink" href="#examples-using-procasl-quantification-compute-perfusion" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbContainer" tooltip="A basic multiple subjects pipeline. CBF maps are normalized to the reference MNI template. "><div class="figure">
-<img alt="../../_images/sphx_glr_multiple_subjects_thumb.png" src="../../_images/sphx_glr_multiple_subjects_thumb.png" />
-<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/multiple_subjects.html#sphx-glr-auto-examples-pipelines-multiple-subjects-py"><em>Multiple subjects pipeline demo</em></a></p>
-</div>
-</div><div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. "><div class="figure">
-<img alt="../../_images/sphx_glr_single_subject_thumb.png" src="../../_images/sphx_glr_single_subject_thumb.png" />
-<p class="caption"><a class="reference internal" href="../../auto_examples/pipelines/single_subject.html#sphx-glr-auto-examples-pipelines-single-subject-py"><em>One subject pipeline demo</em></a></p>
-</div>
-</div><div style='clear:both'></div><dl class="function">
+<div style='clear:both'></div><dl class="function">
 <dt id="procasl.quantification.split_filename">
-<tt class="descclassname">procasl.quantification.</tt><tt class="descname">split_filename</tt><big>(</big><em>fname</em><big>)</big><a class="headerlink" href="#procasl.quantification.split_filename" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">procasl.quantification.</code><code class="descname">split_filename</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="headerlink" href="#procasl.quantification.split_filename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split a filename into parts: path, base filename and extension.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -152,7 +228,6 @@ ASL sequence is assumed aligned.</p>
 </dd></dl>
 
 <div style='clear:both'></div></div>
-</div>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
@@ -161,97 +236,132 @@ ASL sequence is assumed aligned.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">BaseInterface</span></tt>(**inputs)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">BaseInterface</span></code>(**inputs)</td>
 <td>Implements common interface functionality.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">BaseInterfaceInputSpec</span></tt>(**kwargs)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">BaseInterfaceInputSpec</span></code>(**kwargs)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">File</span></tt>([value,&nbsp;filter,&nbsp;auto_set,&nbsp;entries,&nbsp;exists])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">File</span></code>([value,&nbsp;filter,&nbsp;auto_set,&nbsp;entries,&nbsp;exists])</td>
 <td>Defines a trait whose value must be the name of a file using a C-level fast validator.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">OutputMultiPath</span></tt>([trait,&nbsp;value,&nbsp;minlen,&nbsp;...])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">OutputMultiPath</span></code>([trait,&nbsp;value,&nbsp;minlen,&nbsp;...])</td>
 <td>Implements a user friendly traits that accepts one or more paths to files or directories.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">QuantifyCBF</span></tt>(**inputs)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">QuantifyCBF</span></code>(**inputs)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">QuantifyCBFInputSpec</span></tt>(**kwargs)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">QuantifyCBFInputSpec</span></code>(**kwargs)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">QuantifyCBFOutputSpec</span></tt>(**kwargs)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">QuantifyCBFOutputSpec</span></code>(**kwargs)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">TraitedSpec</span></tt>(**kwargs)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">TraitedSpec</span></code>(**kwargs)</td>
 <td>Create a subclass with strict traits.</td>
 </tr>
 </tbody>
 </table>
+<dl class="function">
+<dt>
+<code class="descclassname">procasl.quantification.</code><code class="descname">compute_perfusion</code><span class="sig-paren">(</span><em>in_file</em>, <em>ctl_scans=None</em>, <em>tag_scans=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Compute the mean perfusion image from a functional ASL sequence. The
+ASL sequence is assumed aligned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_file</strong> : str</p>
+<blockquote>
+<div><p>The filename of the input functional ASL 4D image.</p>
+</div></blockquote>
+<p><strong>ctl_scans</strong> : list of int or None, optional</p>
+<blockquote>
+<div><p>Indexes of control volumes.</p>
+</div></blockquote>
+<p><strong>tag_scans</strong> : list of int or None, optional</p>
+<blockquote>
+<div><p>Indexes of tagged volumes, same length as ctl_scans.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out_file</strong> : str</p>
+<blockquote class="last">
+<div><p>The filename of the output perfusion image.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">procasl.quantification</a><ul>
-<li><a class="reference internal" href="#functions">Functions</a><ul>
-<li><a class="reference internal" href="#examples-using-procasl-quantification-compute-perfusion">Examples using <tt class="docutils literal"><span class="pre">procasl.quantification.compute_perfusion</span></tt></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="procasl.preprocessing.html" class="btn btn-neutral" title="procasl.preprocessing" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="procasl.preprocessing.html"
-                        title="previous chapter">procasl.preprocessing</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../_sources/modules/generated/procasl.quantification.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, The procasl developers.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div> 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="procasl.preprocessing.html" title="procasl.preprocessing"
-             >previous</a> |</li>
-        <li><a href="../../index.html">procasl 0 documentation</a> &raquo;</li>
-          <li><a href="../../reference.html" >Procasl API Reference</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2015, Bougacha.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

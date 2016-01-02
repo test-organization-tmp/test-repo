@@ -12,3 +12,9 @@ Procasl API Reference
    preprocessing
    quantification
 
+
+.. autosummary::
+   :toctree: interfaces/generated/
+
+   preprocessing
+   quantification

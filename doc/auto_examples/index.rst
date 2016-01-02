@@ -57,9 +57,9 @@ General-purpose and introductory examples from the sphinx-gallery
 
 .. only:: html
 
-    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_heroes_rescaling_thumb.png
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_heroes_rescale_thumb.png
 
-        :ref:`sphx_glr_auto_examples_plot_heroes_rescaling.py`
+        :ref:`sphx_glr_auto_examples_plot_heroes_rescale.py`
 
 .. raw:: html
 
@@ -69,12 +69,32 @@ General-purpose and introductory examples from the sphinx-gallery
 .. toctree::
    :hidden:
 
-   /auto_examples/plot_heroes_rescaling
+   /auto_examples/plot_heroes_rescale
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbContainer" tooltip="This example gives a basic single subject pipeline for computing CBF from ASL data. ">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_single_subject_thumb.png
+
+        :ref:`sphx_glr_auto_examples_single_subject.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/single_subject
 .. raw:: html
 
     <div style='clear:both'></div>
 
-.. _sin_examples:
+.. _sin_examples-index:
 
 The sin function
 ----------------

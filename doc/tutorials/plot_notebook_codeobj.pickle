@@ -1,0 +1,8 @@
+€}q(U
+plt.ylabel}q(Umodule_shortqUmatplotlib.pyplotUnameqUylabelUmoduleqUmatplotlib.pyplotuUplt.cm.get_cmap}q(hUmatplotlib.pyplothUget_cmaphUmatplotlib.pyplot.cmuUnp.cos}q(hUnumpyqhUcoshhuU
+plt.figure}q	(hU
+matplotlibhUfigurehUmatplotlib.pyplotuU
+plt.imshow}q
+(hUmatplotlib.pyplothUimshowhUmatplotlib.pyplotuUplt.show}q(hUmatplotlib.pyplothUshowhUmatplotlib.pyplotuUnp.meshgrid}q(hUnumpyqhUmeshgridhhuUnp.linspace}q(hUnumpyqhUlinspacehhuUplt.colorbar}q(hU
+matplotlibhUcolorbarhUmatplotlib.pyplotuUnp.pi}q(hUnumpyqhUpihhuU
+plt.xlabel}q(hUmatplotlib.pyplothUxlabelhUmatplotlib.pyplotuu.

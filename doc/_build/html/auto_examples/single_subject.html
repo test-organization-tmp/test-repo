@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>One subject pipeline demo &mdash; Arterial Spin Labeing Data Processing</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Arterial Spin Labeing Data Processing" href="../index.html"/>
+        <link rel="up" title="Gallery of Examples" href="index.html"/>
+        <link rel="next" title="Multiple subjects pipeline demo" href="pipelines/multiple_subjects.html"/>
+        <link rel="prev" title="Rescaling demo" href="plot_heroes_rescale.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> procasl
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction: procasl</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Gallery of Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#general-examples">General examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plot_heroes_coregister.html">Coregistration demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_heroes_realign.html">Realignment demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_heroes_rescale.html">Rescaling demo</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">One subject pipeline demo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#the-sin-function">The sin function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Secondary gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Procasl API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">procasl</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Gallery of Examples</a> &raquo;</li>
+      
+    <li>One subject pipeline demo</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="one-subject-pipeline-demo">
+<span id="sphx-glr-auto-examples-single-subject-py"></span><h1>One subject pipeline demo<a class="headerlink" href="#one-subject-pipeline-demo" title="Permalink to this headline">¶</a></h1>
+<p>This example gives a basic single subject pipeline for computing CBF from
+ASL data.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">nipype.interfaces.spm</span> <span class="kn">as</span> <span class="nn">spm</span>
+<span class="kn">from</span> <span class="nn">nipype.caching</span> <span class="kn">import</span> <span class="n">Memory</span>
+
+<span class="kn">from</span> <span class="nn">procasl</span> <span class="kn">import</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="n">quantification</span>
+
+<span class="c"># Create a memory context</span>
+<span class="n">mem</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">(</span><span class="s">&#39;/tmp&#39;</span><span class="p">)</span>
+
+<span class="c"># Give data location</span>
+<span class="n">func_file</span> <span class="o">=</span> <span class="s">&#39;/tmp/func.nii&#39;</span>
+<span class="n">anat_file</span> <span class="o">=</span> <span class="s">&#39;/tmp/anat.nii&#39;</span>
+
+<span class="c"># Get Tag/Control sequence</span>
+<span class="n">get_tag_ctl</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><a href="../modules/generated/procasl.preprocessing.html#procasl.preprocessing.GetTagControl"><span class="n">preprocessing</span><span class="o">.</span><span class="n">GetTagControl</span></a><span class="p">)</span>
+<span class="n">out_get_tag_ctl</span> <span class="o">=</span> <span class="n">get_tag_ctl</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">func_file</span><span class="p">)</span>
+
+<span class="c"># Rescale</span>
+<span class="n">rescale</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><a href="../modules/generated/procasl.preprocessing.html#procasl.preprocessing.Rescale"><span class="n">preprocessing</span><span class="o">.</span><span class="n">Rescale</span></a><span class="p">)</span>
+<span class="n">out_rescale</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">out_get_tag_ctl</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">tag_ctl_file</span><span class="p">,</span>
+                      <span class="n">ss_tr</span><span class="o">=</span><span class="mf">35.4</span><span class="p">,</span> <span class="n">t_i_1</span><span class="o">=</span><span class="mf">800.</span><span class="p">,</span> <span class="n">t_i_2</span><span class="o">=</span><span class="mf">1800.</span><span class="p">)</span>
+
+<span class="c"># Realign to first scan</span>
+<span class="n">realign</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><a href="../modules/generated/procasl.preprocessing.html#procasl.preprocessing.Realign"><span class="n">preprocessing</span><span class="o">.</span><span class="n">Realign</span></a><span class="p">)</span>
+<span class="n">out_realign</span> <span class="o">=</span> <span class="n">realign</span><span class="p">(</span>
+    <span class="n">in_file</span><span class="o">=</span><span class="n">out_rescale</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">rescaled_file</span><span class="p">,</span>
+    <span class="n">register_to_mean</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">correct_tagging</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c"># Compute mean ASL</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><a href="../modules/generated/procasl.preprocessing.html#procasl.preprocessing.Average"><span class="n">preprocessing</span><span class="o">.</span><span class="n">Average</span></a><span class="p">)</span>
+<span class="n">out_average</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">out_realign</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">realigned_files</span><span class="p">)</span>
+
+<span class="c"># Segment anat</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">spm_path</span> <span class="o">=</span> <span class="n">spm</span><span class="o">.</span><span class="n">Info</span><span class="o">.</span><span class="n">version</span><span class="p">()[</span><span class="s">&#39;path&#39;</span><span class="p">]</span>
+<span class="n">tissue_prob_maps</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">spm_path</span><span class="p">,</span> <span class="s">&#39;tpm&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span>
+                    <span class="p">[</span><span class="s">&#39;grey.nii&#39;</span><span class="p">,</span> <span class="s">&#39;white.nii&#39;</span><span class="p">,</span> <span class="s">&#39;csf.nii&#39;</span><span class="p">]]</span>
+<span class="n">segment</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Segment</span><span class="p">)</span>
+<span class="n">out_segment</span> <span class="o">=</span> <span class="n">segment</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">anat_file</span><span class="p">,</span>
+    <span class="n">gm_output_type</span><span class="o">=</span><span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">],</span>
+    <span class="n">wm_output_type</span><span class="o">=</span><span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">],</span>
+    <span class="n">save_bias_corrected</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c"># Coregister anat to mean ASL</span>
+<span class="n">coregister_anat</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Coregister</span><span class="p">)</span>
+<span class="n">out_coregister_anat</span> <span class="o">=</span> <span class="n">coregister_anat</span><span class="p">(</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">out_average</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">mean_file</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">anat_file</span><span class="p">,</span>
+    <span class="n">apply_to_files</span><span class="o">=</span><span class="p">[</span><span class="n">out_segment</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">native_gm_image</span><span class="p">,</span>
+                    <span class="n">out_segment</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">native_wm_image</span><span class="p">],</span>
+    <span class="n">write_interp</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">jobtype</span><span class="o">=</span><span class="s">&#39;estwrite&#39;</span><span class="p">)</span>
+
+<span class="c"># Get M0</span>
+<span class="n">get_m0</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><a href="../modules/generated/procasl.preprocessing.html#procasl.preprocessing.GetM0"><span class="n">preprocessing</span><span class="o">.</span><span class="n">GetM0</span></a><span class="p">)</span>
+<span class="n">out_get_m0</span> <span class="o">=</span> <span class="n">get_m0</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">func_file</span><span class="p">)</span>
+
+<span class="c"># Coregister M0 to mean ASL</span>
+<span class="n">coregister_m0</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Coregister</span><span class="p">)</span>
+<span class="n">out_coregister_m0</span> <span class="o">=</span> <span class="n">coregister_m0</span><span class="p">(</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">out_average</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">mean_file</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">out_get_m0</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">m0_file</span><span class="p">,</span>
+    <span class="n">write_interp</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">jobtype</span><span class="o">=</span><span class="s">&#39;estwrite&#39;</span><span class="p">)</span>
+
+<span class="c"># Smooth M0</span>
+<span class="n">smooth_m0</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Smooth</span><span class="p">)</span>
+<span class="n">out_smooth_m0</span> <span class="o">=</span> <span class="n">smooth_m0</span><span class="p">(</span>
+    <span class="n">in_files</span><span class="o">=</span><span class="n">out_coregister_m0</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">coregistered_source</span><span class="p">,</span>
+    <span class="n">fwhm</span><span class="o">=</span><span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">])</span>
+
+<span class="c"># Compute perfusion</span>
+<span class="n">n_scans</span> <span class="o">=</span> <a href="../modules/generated/procasl.preprocessing.html#procasl.preprocessing.get_scans_number"><span class="n">preprocessing</span><span class="o">.</span><span class="n">get_scans_number</span></a><span class="p">(</span><span class="n">out_realign</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">realigned_files</span><span class="p">)</span>
+<span class="n">ctl_scans</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_scans</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">tag_scans</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_scans</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">perfusion_file</span> <span class="o">=</span> <span class="n">quantification</span><span class="o">.</span><span class="n">compute_perfusion</span><span class="p">(</span>
+    <span class="n">out_realign</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">realigned_files</span><span class="p">,</span>
+    <span class="n">ctl_scans</span><span class="o">=</span><span class="n">ctl_scans</span><span class="p">,</span>
+    <span class="n">tag_scans</span><span class="o">=</span><span class="n">tag_scans</span><span class="p">)</span>
+
+<span class="c"># Compute CBF</span>
+<span class="n">quantify</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">quantification</span><span class="o">.</span><span class="n">QuantifyCBF</span><span class="p">)</span>
+<span class="n">out_quantify</span> <span class="o">=</span> <span class="n">quantify</span><span class="p">(</span>
+    <span class="n">perfusion_file</span><span class="o">=</span><span class="n">perfusion_file</span><span class="p">,</span>
+    <span class="n">m0_file</span><span class="o">=</span><span class="n">out_smooth_m0</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">smoothed_files</span><span class="p">,</span>
+    <span class="n">tr</span><span class="o">=</span><span class="mf">2500.</span><span class="p">,</span>
+    <span class="n">t1_gm</span><span class="o">=</span><span class="mf">1331.</span><span class="p">)</span>
+
+<span class="c"># Mask CBF map with brain mask</span>
+<span class="n">brain_mask_file</span> <span class="o">=</span> <a href="../modules/generated/procasl.preprocessing.html#procasl.preprocessing.compute_brain_mask"><span class="n">preprocessing</span><span class="o">.</span><span class="n">compute_brain_mask</span></a><span class="p">(</span>
+    <span class="n">out_coregister_anat</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">coregistered_source</span><span class="p">,</span> <span class="n">frac</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cbf_map</span> <span class="o">=</span> <a href="../modules/generated/procasl.preprocessing.html#procasl.preprocessing.apply_mask"><span class="n">preprocessing</span><span class="o">.</span><span class="n">apply_mask</span></a><span class="p">(</span><span class="n">out_quantify</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">cbf_file</span><span class="p">,</span>
+                                   <span class="n">brain_mask_file</span><span class="p">)</span>
+
+<span class="c"># Plot CBF map on top of anat</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+    <span class="n">cbf_map</span><span class="p">,</span>
+    <span class="n">bg_img</span><span class="o">=</span><span class="n">out_coregister_anat</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">coregistered_source</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">150.</span><span class="p">,</span>
+    <span class="n">display_mode</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Total running time of the script:</strong>
+(0 minutes 0.000 seconds)</p>
+<p><strong>Download Python source code:</strong> <a class="reference download internal" href="../_downloads/single_subject1.py"><code class="xref download docutils literal"><span class="pre">single_subject.py</span></code></a></p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pipelines/multiple_subjects.html" class="btn btn-neutral float-right" title="Multiple subjects pipeline demo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_heroes_rescale.html" class="btn btn-neutral" title="Rescaling demo" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, The procasl developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

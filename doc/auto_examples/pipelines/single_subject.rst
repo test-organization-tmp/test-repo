@@ -19,17 +19,11 @@ ASL data.
     from procasl import preprocessing, quantification
 
     # Create a memory context
-    mem = Memory('/tmp/no_workflow')
+    mem = Memory('/tmp')
 
     # Give data location
     func_file = '/tmp/func.nii'
     anat_file = '/tmp/anat.nii'
-
-    # Set spm paths
-    matlab_cmd = '/i2bm/local/spm8-standalone/run_spm8.sh ' +\
-        '/i2bm/local/spm8-standalone/mcr/v713 script'
-    spm.SPMCommand.set_mlab_paths(matlab_cmd=matlab_cmd, use_mcr=True)
-    paths = ['/i2bm/local/spm8-standalone/spm8_mcr/spm8/']  # TODO: check needed
 
     # Get Tag/Control sequence
     get_tag_ctl = mem.cache(preprocessing.GetTagControl)
@@ -45,21 +39,23 @@ ASL data.
     out_realign = realign(
         in_file=out_rescale.outputs.rescaled_file,
         register_to_mean=False,
-        correct_tagging=True,
-        paths=paths)
+        correct_tagging=True)
 
     # Compute mean ASL
     average = mem.cache(preprocessing.Average)
     out_average = average(in_file=out_realign.outputs.realigned_files)
 
     # Segment anat
+    import os
+    spm_path = spm.Info.version()['path']
+    tissue_prob_maps = [os.path.join(spm_path, 'tpm', filename) for filename in
+                        ['grey.nii', 'white.nii', 'csf.nii']]
     segment = mem.cache(spm.Segment)
     out_segment = segment(
         data=anat_file,
         gm_output_type=[False, False, True],
         wm_output_type=[False, False, True],
-        save_bias_corrected=True,
-        paths=paths)
+        save_bias_corrected=True)
 
     # Coregister anat to mean ASL
     coregister_anat = mem.cache(spm.Coregister)
@@ -69,8 +65,7 @@ ASL data.
         apply_to_files=[out_segment.outputs.native_gm_image,
                         out_segment.outputs.native_wm_image],
         write_interp=3,
-        jobtype='estwrite',
-        paths=paths)
+        jobtype='estwrite')
 
     # Get M0
     get_m0 = mem.cache(preprocessing.GetM0)
@@ -82,15 +77,13 @@ ASL data.
         target=out_average.outputs.mean_file,
         source=out_get_m0.outputs.m0_file,
         write_interp=3,
-        jobtype='estwrite',
-        paths=paths)
+        jobtype='estwrite')
 
     # Smooth M0
     smooth_m0 = mem.cache(spm.Smooth)
     out_smooth_m0 = smooth_m0(
         in_files=out_coregister_m0.outputs.coregistered_source,
-        fwhm=[5., 5., 5.],
-        paths=paths)
+        fwhm=[5., 5., 5.])
 
     # Compute perfusion
     n_scans = preprocessing.get_scans_number(out_realign.outputs.realigned_files)
