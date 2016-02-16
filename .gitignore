@@ -54,6 +54,8 @@ coverage.xml
 
 # Sphinx documentation
 doc/_build/
+doc/modules/generated
+doc/interfaces/generated
 doc/auto_examples/
 doc/tutorials/
 
