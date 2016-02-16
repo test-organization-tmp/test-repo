@@ -1,3 +1,5 @@
+*~
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -52,7 +54,7 @@ coverage.xml
 
 # Sphinx documentation
 doc/_build/
-doc/autoexamples/
+doc/auto_examples/
 doc/tutorials/
 
 # PyBuilder
