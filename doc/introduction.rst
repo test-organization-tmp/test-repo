@@ -16,8 +16,7 @@ What is procasl: preprocessing and quantification of ASL
     :ref:`single subject pipeline <single_subject>`,
     :ref:`second level pipeline <second_level>`).
 
-    Procasl can be used on :ref:`pulsed ASL <pulsed_asl_example.py>`,
-    :ref:`pseudo-continuous ASL <pc_asl>`, or 
+    Procasl can be used on :ref:`pulsed ASL <pulsed_asl_example.py>` and 
     :ref:`continuous ASL <continuous_asl.py>` data.
 
 Whetting Your Appetite
@@ -86,7 +85,7 @@ You should see the FSL GUI with the version number in the header.
     export SPM_PATH=/i2bm/local/spm8-standalone/spm8_mcr/spm8
 
 **Using SPM MCR**: If you don't have a matlab licence, specify the location of the Matlab Compiler Runtime and force the
-use of the standalone MCR version of spm by appending the following lines to the .bashrc
+use of the standalone MCR version of spm by appending the following lines to the .bashrc::
 
     # SPM MCR
     export SPMMCRCMD='/home/salma/Téléchargements/spm8/run_spm8.sh /home/salma/Téléchargements/MCR/v713 script'
